@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        
+        
+       .navbar{
+           width: 85%;
+           margin: auto;
+           padding: 35px;
+           align-items: center;
+           display: flex ;
+           justify-content: space-between;
+           flex-direction: row;
+       }
+       h2{
+           cursor: pointer;
+       }
+       li{
+           flex-direction: row;
+       }
+       .navbar ul li{
+           list-style: none;
+           display: inline-block;
+           margin: 0 20px;
+           position: relative;
+           text-transform: uppercase;
+       }
+       .navbar ul a{
+           text-decoration: none;
+           color: #fff;
+            
+       }
+       .navbar ul li::after{
+           content: '';
+           height: 3px;
+           width: 0%;
+           background:#33ff00;
+           position: absolute;
+           left: 0px;
+           right: 0px;
+           bottom: -2vh;
+           transition:ease-o= 0.5s;
+       }
+       .navbar ul li:hover::after{
+           content: '';
+           height: 3px;
+           width: 110%;
+           background:#33ff00;
+           position: absolute;
+           left: 0px;
+           right: 0px;
+           bottom: -2vh;
+           transition: 0.5s;
+       }
+       .logo h2 a{
+           text-decoration: none;
+           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           font-style: oblique;
+           color: rgb(231, 255, 14);
+       }
+       /* .content{
+       width: 100%;
+       position: absolute;
+       top: 50%;
+       transform: translateY(-50%);
+       text-align: center;
+       } */
+       .banner{
+           background-color: rgb(125, 143, 19);
+       }
+    </style>
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <div class="banner">
+        <div class="navbar">
+             
+            <ul>
+                <!-- <li class="nav-item"><a class="nav-link" href="/land">Home</a></li>-->
+                <li class="nav-item"><a class="nav-link" href="/contact"><span class="">Test your eyes</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="/home">Information</a></li>
+                <li class="nav-item"><a class="nav-link" href="/display">view patient list</a></li> 
+                <li class="nav-item"><a class="nav-link" href="/signin">Logout</a></li> 
+                <!--<li class="nav-item"><a class="nav-link" href="/signin">Doctors</a></li>
+                <li><a class="nav-link" href="/doctors">Doctors</a></li> -->
+                {% block logout %}
+                  
+                {% endblock logout %}
+            </ul>
+        </div>
+    </div>
+    {% block body %} {% endblock %}
+    <br>
+    <br>
+    <!-- <footer class="bg-transparent text-center text-light" style="padding: 10px 10px 0px 10px;
+    bottom: 0;">
+        © 2022 Copyright:
+          <a class="text-light" href="/index">Diabetic Retinopathy</a>
+    </footer> -->
+    
+</body>
+</html>

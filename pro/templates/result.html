@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+    html,
+body 
+{
+	height: 100%;
+  align-content: center;
+  }
+.cont
+{width: 800px;
+  position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.spectrum-background {
+  background:
+      linear-gradient(red, transparent),
+      linear-gradient(to top left, lime, transparent),
+      linear-gradient(to top right, blue, transparent);
+  background-blend-mode: screen;}
+.container{
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  transform: translate(-75%, -50%);
+  width: 400px;
+  background:transparent;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  text-align: center;
+}
+.container1{
+  position: absolute;
+  top: 50%;
+  right: 55%;
+  transform: translate(-75%, -50%);
+  width: 400px;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: 10px 10px 15px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+body {
+	margin: 0;
+	background: linear-gradient(45deg, #49a09d, #5f2c82);
+	font-family: sans-serif;
+	font-weight: 100;
+}
+table {
+	width: 500px;
+	
+  border: 1px solid;
+}
+
+th,
+td {
+	padding: 10px;
+	background-color: transparent;
+	color: #fff;
+    text-align: center;
+  font-size: 20px;
+  font-family: "Times New Roman", Times, serif;
+}
+h1{
+  padding:15px;
+  align:center
+  color: #fff;
+    text-align: center;
+}
+
+th {
+	text-align: center;
+}
+
+thead {
+	th {
+		background-color: #55608f;
+	}
+}
+
+tbody {
+	tr {
+		&:hover {
+			background-color: transparent;
+      
+		}
+	}
+	td {
+		position: relative;
+		&:hover {
+			&:before {
+				content: "";
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: -9999px;
+				bottom: -9999px;
+				background-color: transparent;
+				z-index: -1;
+        font-size: 75
+			}
+		}
+	}
+}
+.navbar{
+  width: 85%;
+  margin: auto;
+  padding: 35px;
+  align-items: center;
+  display: flex ;
+  justify-content: space-between;
+  flex-direction: row;
+}
+h2{
+  cursor: pointer;
+}
+li{
+  flex-direction: row;
+}
+.navbar ul li{
+  list-style: none;
+  display: inline-block;
+  margin: 0 20px;
+  position: relative;
+  text-transform: uppercase;
+}
+.navbar ul a{
+  text-decoration: none;
+  color: #fff;
+   
+}
+.navbar ul li::after{
+  content: '';
+  height: 3px;
+  width: 0%;
+  background:#33ff00;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: -2vh;
+  transition:ease-o= 0.5s;
+}
+.navbar ul li:hover::after{
+  content: '';
+  height: 3px;
+  width: 110%;
+  background:#33ff00;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: -2vh;
+  transition: 0.5s;
+}
+.logo h2 a{
+  text-decoration: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-style: oblique;
+  color: rgb(231, 255, 14);
+}
+/* .content{
+width: 100%;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+text-align: center;
+} */
+.banner{
+  background-color: rgb(125, 143, 19);
+}
+    
+  </style></head>
+
+<body>
+
+  <div class="banner">
+    <div class="navbar">
+         
+        <ul>
+            <!-- <li class="nav-item"><a class="nav-link" href="/land">Home</a></li>-->
+            <li class="nav-item"><a class="nav-link" href="/contact"><span class="">Test your eyes</span></a></li>
+            <li class="nav-item"><a class="nav-link" href="/home">Information</a></li>
+            <li class="nav-item"><a class="nav-link" href="/display">view patient list</a></li> 
+            <li class="nav-item"><a class="nav-link" href="/signin">Logout</a></li> 
+            <!--<li class="nav-item"><a class="nav-link" href="/signin">Doctors</a></li>
+            <li><a class="nav-link" href="/doctors">Doctors</a></li> -->
+            
+        </ul>
+    </div>
+</div>
+
+<div class="center"> 
+    <div class="cont">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <br><br><br><br><br><br><br><br><br><br><br>
+      <h1>Hello! {{name}} here are your details</h1>
+      <table class="table table-bordered table-striped">
+        
+        <tbody>
+               <tr style="width:30%">
+                <th >Patient Id</th>
+                <td >{{id}}</td>
+               </tr>
+               <tr>
+                <th>Name</th>
+                <td>{{ name }} </td>
+               </tr>
+               <tr>
+                <th>Email Id</th>
+                <td>{{ email }} </td>
+               </tr>
+               <tr>
+                <th>Phone</th>
+                <td>{{ phone }} </td>
+               </tr>
+               <tr>
+                <th>Description</th>
+                <td>{{ desc }} </td>
+               </tr>
+        </tbody>
+    </table>
+    </div>
+  <br>
+  <br>
+  <br>
+  <br><br><br><br><br><br><br><br><br><br>
+  <div class="container">
+    <h2>Left eye image</h2>
+    <img src="{{img1}}" alt="" height="55%" width="55%">
+    <h3>{{ans1}} </h1>
+      
+  </div>
+    <div class="container1">
+      <h2>Right eye image</h2>
+    <img src="{{img2}}" alt="" height="55%" width="55%">
+    <h3>{{ans2}}</h1> 
+        
+     
+
+</div>
+
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+</body></html>
+
+
+
+
+
+    
+    
+    
+    

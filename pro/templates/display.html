@@ -1,0 +1,279 @@
+<style>
+	
+	  
+	.wrapper  {
+	  padding: 50px 0;
+	  text-align: center;
+	  font-weight: 700;
+	  font-size: 32px;
+	  color: #fff;
+	}
+	
+	.wrapper .search_box {
+	  max-width: 600px;
+	  background: transparent;
+	  margin: 0 auto;
+	  padding: 25px 0 50px;
+	  border-radius: 3px;
+	}
+	
+	.wrapper .search_box input {
+	  border: 0;
+	  border-bottom: 2px solid #e5edfa;
+	  width: 100%;
+	  outline: none;
+	  padding: 10px;
+	  background: transparent;
+	  color: #fff;
+	  font-size: 16px;
+	}
+	
+	::placeholder {
+	  color: #e5edfa;
+	}
+	
+	.wrapper .search_box input:focus {
+	  border-bottom: 2px solid #fff;
+	}
+	  html,
+  body {
+	  height: 100%;
+	  
+  }
+  
+  body {
+	  margin: 0;
+	  background:
+        linear-gradient(red, transparent),
+        linear-gradient(to top left, lime, transparent),
+        linear-gradient(to top right, blue, transparent);
+      background-blend-mode: screen;
+	  font-family: sans-serif;
+	  font-weight: 100;
+  }
+  
+  .container {
+	  position: absolute;
+	  top: 75%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+  }
+  
+  table {
+	  width: 1300px;
+	  
+	  overflow: hidden;
+	  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+	  margin-left: 3%;
+	  text-align: center;
+	  border: 1px solid black;
+  }
+  
+  th,
+  td,h1 {
+	  padding: 15px;
+	  background-color: transparent;
+	  color: #fff;
+	  text-align: center;
+	  border: 1px solid;
+  }
+  
+  th {
+	  text-align: center;
+  }
+  
+  thead {
+	  th{
+		  background-color: #55608f;
+	  }
+  }
+  
+  tbody {
+	  tr {
+		  &:hover {
+			  background-color: rgba(255,255,255,0.3);
+		  }
+	  }
+	  td {
+		  position: relative;
+		  &:hover {
+			  &:before {
+				  content: "";
+				  position: absolute;
+				  left: 0;
+				  right: 0;
+				  top: -9999px;
+				  bottom: -9999px;
+				  background-color: rgba(255,255,255,0.2);
+				  z-index: -1;
+			  }
+		  }
+		  .reportlink a{
+	  
+			  text-decoration: none;
+			}
+			.reportlink a:hover{
+			  text-decoration: underline;
+			}
+	  }
+  }
+  .navbar{
+	width: 85%;
+	margin: auto;
+	padding: 35px;
+	align-items: center;
+	display: flex ;
+	justify-content: space-between;
+	flex-direction: row;
+}
+h2{
+	cursor: pointer;
+}
+li{
+	flex-direction: row;
+}
+.navbar ul li{
+	list-style: none;
+	display: inline-block;
+	margin: 0 20px;
+	position: relative;
+	text-transform: uppercase;
+}
+.navbar ul a{
+	text-decoration: none;
+	color: #fff;
+	 
+}
+.navbar ul li::after{
+	content: '';
+	height: 3px;
+	width: 0%;
+	background:#33ff00;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: -2vh;
+	transition:ease-o= 0.5s;
+}
+.navbar ul li:hover::after{
+	content: '';
+	height: 3px;
+	width: 110%;
+	background:#33ff00;
+	position: absolute;
+	left: 0px;
+	right: 0px;
+	bottom: -2vh;
+	transition: 0.5s;
+}
+.logo h2 a{
+	text-decoration: none;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-style: oblique;
+	color: rgb(231, 255, 14);
+}
+/* .content{
+width: 100%;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+text-align: center;
+} */
+.banner{
+	background-color: rgb(125, 143, 19);
+}
+</style>
+
+<div class="banner">
+	<div class="navbar">
+		 
+		<ul>
+			<!-- <li class="nav-item"><a class="nav-link" href="/land">Home</a></li>-->
+			<li class="nav-item"><a class="nav-link" href="/contact"><span class="">Test your eyes</span></a></li>
+			<li class="nav-item"><a class="nav-link" href="/home">Information</a></li>
+			<li class="nav-item"><a class="nav-link" href="/display">view patient list</a></li> 
+			<li class="nav-item"><a class="nav-link" href="/signin">Logout</a></li> 
+			<!--<li class="nav-item"><a class="nav-link" href="/signin">Doctors</a></li>
+			<li><a class="nav-link" href="/doctors">Doctors</a></li> -->
+			
+		</ul>
+	</div>
+</div>
+
+<script>
+  var search_input = document.querySelector("#search_input");
+
+search_input.addEventListener("keyup", function(e){
+var span_items = document.querySelectorAll(".table_body .name span");
+var table_body = document.querySelector(".table_body ul");
+var search_item = e.target.value.toLowerCase();
+
+span_items.forEach(function(item){
+ if(item.textContent.toLowerCase().indexOf(search_item) != -1){
+	item.closest("li").style.display = "block";
+ }
+ else{
+   item.closest("li").style.display = "none";
+   }
+})
+
+});
+</script>
+<div class="wrapper">
+  <form class="d-fle" method="POST" action="/search">
+	  {% csrf_token %}
+  <div class="header">
+	<div class="search_box">
+	  <input type="text" id="search_input" placeholder="Fliter Table Using Names">
+	</div>
+  </div>
+  </form>
+  <br><br><br><br><br>
+  <div class="container">
+		  <table class="table table-striped table-hover">
+			  <thead><th colspan="9" >Patient Details</th></thead>
+			  <thead>
+				  <tr>
+					  <th>S.No</th>
+					  <th>Name</th>
+					  <th>Email</th>
+					  <th>Phone</th>
+					  <th>Left eye image</th>
+					  <th>Right eye image</th>
+					  <th>Left eye result</th>
+					  <th>Right eye result</th>
+					  <th>delete/edit</th>
+				  </tr>
+			  </thead>
+			  <tbody>
+			  {% for i in  obj %}
+				  <tr>
+					  <td>{{i.id}}</td>
+					  <td>{{i.name}}</td>
+					  <td>{{i.email}}</td>
+					  <td>{{i.phone}}</td> 
+					  <td><a href="/media/{{i.img1}}">left</a></td>
+					  <td><a href="/media/{{i.img2}}">right</a></td>
+					  <td scope="col">{{i.res1}}</td>
+					  <td scope="col">{{i.res2}}</td>
+					  <td> 
+						  <!--<a href="/edit/{{i.id}}">edit</a>-->
+						  <a href="/delete/{{i.id}}">delete</a>
+					  </td>
+					  
+				  </tr>
+			  
+			  
+		  
+		  {% endfor %}
+	  </tbody>
+	  </table>
+	  <!-- <div class="reportlink">
+		  <a href="/display" >view patient list</a>
+		</div> -->
+	  
+		  
+	  
+  </div>
+  
+
